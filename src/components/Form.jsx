@@ -7,6 +7,7 @@ const FormStyled = styled.form`
     border: 1px solid black;
     padding: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -67,7 +68,7 @@ class Form extends React.Component {
             />
           </LabelStyled>
           <LabelStyled htmlFor="number">
-            <span>Tel:</span>
+            <span>Number:</span>
             <InputStyled
               type="tel"
               name="number"
