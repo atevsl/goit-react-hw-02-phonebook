@@ -1,7 +1,7 @@
 import React from 'react';
-import Filter from './Filter/Filter';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
+import Filter from '../Filter/Filter';
+import ContactForm from '../ContactForm/ContactForm';
+import ContactList from '../ContactList/ContactList';
 
 class App extends React.Component {
   state = {
@@ -35,14 +35,17 @@ class App extends React.Component {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
         }}
       >
-        <ContactForm onSubmit={this.addContact} />
-        <Filter onInputHendler={this.onInputHendler}></Filter>
+        <>
+          <ContactForm onSubmit={this.addContact} />
+          <Filter onInputHendler={this.onInputHendler}></Filter>
+        </>
+
         <ContactList
           deleteItem={this.deleteItem}
           onInputHendler={this.onInputHendler}

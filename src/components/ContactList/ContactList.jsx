@@ -1,11 +1,19 @@
 import React from 'react';
+import {
+  ListStyled,
+  ListItemStyled,
+  ContactTextStyled,
+} from './ContactList.styled';
+import { ButtonStyled } from '../ContactForm/ContactForm.Styled';
 const ContactItem = ({ contact: { id, name, number }, deleteItem }) => {
   return (
     <>
-      {name}: {number}
-      <button type="button" onClick={() => deleteItem(id)}>
+      <ContactTextStyled>
+        {name}: {number}
+      </ContactTextStyled>
+      <ButtonStyled type="button" onClick={() => deleteItem(id)}>
         Delete
-      </button>
+      </ButtonStyled>
     </>
   );
 };
@@ -17,16 +25,16 @@ class ContactList extends React.Component {
       <>
         <h2>Contacts</h2>
 
-        <ul>
+        <ListStyled>
           {this.props.filter === ''
             ? this.props.phoneBook.map((contact, idx) => {
                 return (
-                  <li key={idx}>
+                  <ListItemStyled key={idx}>
                     <ContactItem
                       contact={contact}
                       deleteItem={this.props.deleteItem}
                     ></ContactItem>
-                  </li>
+                  </ListItemStyled>
                 );
               })
             : this.props.phoneBook
@@ -37,15 +45,15 @@ class ContactList extends React.Component {
                 )
                 .map((contact, idx) => {
                   return (
-                    <li key={idx}>
+                    <ListItemStyled key={idx}>
                       <ContactItem
                         contact={contact}
                         deleteItem={this.props.deleteItem}
                       ></ContactItem>
-                    </li>
+                    </ListItemStyled>
                   );
                 })}
-        </ul>
+        </ListStyled>
       </>
     );
   }

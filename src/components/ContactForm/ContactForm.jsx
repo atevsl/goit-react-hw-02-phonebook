@@ -1,44 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import shortid from 'shortid';
-
-const FormStyled = styled.form`
-   {
-    border: 1px solid black;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-const ButtonStyled = styled.button`
-   {
-    padding: 8px 10px;
-    background-color: white;
-    border-radius: 5px;
-    font-size: 32px;
-    margin-left: 10px;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-  }
-`;
-const InputStyled = styled.input`
-   {
-    font-size: 28px;
-    height: 50px;
-    margin-left: 10px;
-  }
-`;
-const LabelStyled = styled.label`
-   {
-    display: flex;
-    justify-content: center;
-    alignitems: center;
-  }
-`;
+import {
+  FormStyled,
+  ButtonStyled,
+  InputStyled,
+  LabelStyled,
+} from './ContactForm.Styled';
 
 class ContactForm extends React.Component {
   state = {
@@ -87,6 +54,7 @@ class ContactForm extends React.Component {
               onChange={this.onInputHendler}
             ></InputStyled>
           </LabelStyled>
+
           <ButtonStyled type="submit">Add contact</ButtonStyled>
         </FormStyled>
       </>
