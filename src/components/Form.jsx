@@ -45,6 +45,7 @@ class Form extends React.Component {
     const newContact = {
       name: this.props.name,
       id: shortid.generate(),
+      number: this.props.number,
     };
     this.props.onSubmit(newContact);
   };
@@ -53,7 +54,7 @@ class Form extends React.Component {
       <>
         <h1>Phonebook</h1>
         <FormStyled onSubmit={this.onSubmitHendler}>
-          <LabelStyled htmlFor="">
+          <LabelStyled htmlFor="name">
             <span>Name:</span>
             <InputStyled
               type="text"
@@ -62,8 +63,20 @@ class Form extends React.Component {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
               value={this.props.name}
-              onChange={this.props.enterName}
+              onChange={this.props.onInputHendler}
             />
+          </LabelStyled>
+          <LabelStyled htmlFor="number">
+            <span>Tel:</span>
+            <InputStyled
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+              value={this.props.number}
+              onChange={this.props.onInputHendler}
+            ></InputStyled>
           </LabelStyled>
           <ButtonStyled type="submit">Add contact</ButtonStyled>
         </FormStyled>

@@ -7,15 +7,16 @@ class App extends React.Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
   addContact = newContact => {
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
-  enterName = e => {
-    this.setState({ name: e.currentTarget.value });
+  onInputHendler = e => {
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
   render() {
     return (
@@ -32,8 +33,9 @@ class App extends React.Component {
       >
         <Form
           name={this.state.name}
+          number={this.state.number}
           onSubmit={this.addContact}
-          enterName={this.enterName}
+          onInputHendler={this.onInputHendler}
         />
         <ContactList phoneBook={this.state.contacts}></ContactList>
       </div>
