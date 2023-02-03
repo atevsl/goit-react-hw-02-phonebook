@@ -40,15 +40,23 @@ const LabelStyled = styled.label`
   }
 `;
 
-class Form extends React.Component {
+class ContactForm extends React.Component {
+  state = {
+    name: '',
+    number: '',
+  };
+  onInputHendler = e => {
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+  };
   onSubmitHendler = e => {
     e.preventDefault();
     const newContact = {
-      name: this.props.name,
+      name: this.state.name,
       id: shortid.generate(),
-      number: this.props.number,
+      number: this.state.number,
     };
     this.props.onSubmit(newContact);
+    this.setState({ name: '', number: '' });
   };
   render() {
     return (
@@ -63,8 +71,8 @@ class Form extends React.Component {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
-              value={this.props.name}
-              onChange={this.props.onInputHendler}
+              value={this.state.name}
+              onChange={this.onInputHendler}
             />
           </LabelStyled>
           <LabelStyled htmlFor="number">
@@ -75,8 +83,8 @@ class Form extends React.Component {
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
-              value={this.props.number}
-              onChange={this.props.onInputHendler}
+              value={this.state.number}
+              onChange={this.onInputHendler}
             ></InputStyled>
           </LabelStyled>
           <ButtonStyled type="submit">Add contact</ButtonStyled>
@@ -85,4 +93,4 @@ class Form extends React.Component {
     );
   }
 }
-export default Form;
+export default ContactForm;

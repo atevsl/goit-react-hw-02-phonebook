@@ -1,6 +1,6 @@
 import React from 'react';
-
-import Form from './Form';
+import Filter from './Filter';
+import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 
 class App extends React.Component {
@@ -11,15 +11,12 @@ class App extends React.Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
     filter: '',
   };
   addContact = newContact => {
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
-    this.setState({ name: '', number: '' });
   };
   onInputHendler = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -37,16 +34,12 @@ class App extends React.Component {
           color: '#010101',
         }}
       >
-        <Form
-          name={this.state.name}
-          number={this.state.number}
-          onSubmit={this.addContact}
-          onInputHendler={this.onInputHendler}
-        />
+        <ContactForm onSubmit={this.addContact} />
+        <Filter onInputHendler={this.onInputHendler}></Filter>
         <ContactList
+          onInputHendler={this.onInputHendler}
           filter={this.state.filter}
           phoneBook={this.state.contacts}
-          onInputHendler={this.onInputHendler}
         ></ContactList>
       </div>
     );
