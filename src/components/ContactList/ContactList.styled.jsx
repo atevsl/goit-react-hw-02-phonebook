@@ -3,7 +3,7 @@ export const ListStyled = styled.ul`
    {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     overflow: auto;
     margin-top: 0;
   }
