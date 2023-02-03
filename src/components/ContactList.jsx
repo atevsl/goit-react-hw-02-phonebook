@@ -1,4 +1,15 @@
 import React from 'react';
+const ContactItem = ({ contact: { id, name, number }, deleteItem }) => {
+  return (
+    <>
+      {name}: {number}
+      <button type="button" onClick={() => deleteItem(id)}>
+        Delete
+      </button>
+    </>
+  );
+};
+
 class ContactList extends React.Component {
   state = {};
   render() {
@@ -8,10 +19,13 @@ class ContactList extends React.Component {
 
         <ul>
           {this.props.filter === ''
-            ? this.props.phoneBook.map(contact => {
+            ? this.props.phoneBook.map((contact, idx) => {
                 return (
-                  <li key={contact.id}>
-                    {contact.name}: {contact.number}
+                  <li key={idx}>
+                    <ContactItem
+                      contact={contact}
+                      deleteItem={this.props.deleteItem}
+                    ></ContactItem>
                   </li>
                 );
               })
@@ -21,10 +35,13 @@ class ContactList extends React.Component {
                     .toLowerCase()
                     .includes(this.props.filter.toLowerCase())
                 )
-                .map(contact => {
+                .map((contact, idx) => {
                   return (
-                    <li key={contact.id}>
-                      {contact.name}: {contact.number}
+                    <li key={idx}>
+                      <ContactItem
+                        contact={contact}
+                        deleteItem={this.props.deleteItem}
+                      ></ContactItem>
                     </li>
                   );
                 })}

@@ -23,6 +23,11 @@ class App extends React.Component {
   onInputHendler = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
+  deleteItem = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
   render() {
     return (
       <div
@@ -39,6 +44,7 @@ class App extends React.Component {
         <ContactForm onSubmit={this.addContact} />
         <Filter onInputHendler={this.onInputHendler}></Filter>
         <ContactList
+          deleteItem={this.deleteItem}
           onInputHendler={this.onInputHendler}
           filter={this.state.filter}
           phoneBook={this.state.contacts}
