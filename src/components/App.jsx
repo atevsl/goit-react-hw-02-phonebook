@@ -14,9 +14,11 @@ class App extends React.Component {
     filter: '',
   };
   addContact = newContact => {
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-    }));
+    this.state.contacts.find(contact => contact.name === newContact.name)
+      ? alert(newContact.name + ' is already in contacts')
+      : this.setState(prevState => ({
+          contacts: [newContact, ...prevState.contacts],
+        }));
   };
   onInputHendler = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
