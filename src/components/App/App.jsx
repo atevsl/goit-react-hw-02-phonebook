@@ -13,21 +13,35 @@ class App extends React.Component {
     ],
     filter: '',
   };
+
   addContact = newContact => {
-    this.state.contacts.find(contact => contact.name === newContact.name)
-      ? alert(newContact.name + ' is already in contacts')
-      : this.setState(prevState => ({
-          contacts: [newContact, ...prevState.contacts],
-        }));
+    if (
+      this.state.contacts.some(
+        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      )
+    ) {
+      alert(newContact.name + ' is already in contacts');
+    } else {
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    }
   };
-  onInputHendler = e => {
-    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+
+  filterHendler = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
   deleteItem = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
+  showFilteredContacts = () => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
+
   render() {
     return (
       <div
@@ -41,17 +55,18 @@ class App extends React.Component {
           color: '#010101',
         }}
       >
-        <>
-          <ContactForm onSubmit={this.addContact} />
-          <Filter onInputHendler={this.onInputHendler}></Filter>
-        </>
-
-        <ContactList
-          deleteItem={this.deleteItem}
-          onInputHendler={this.onInputHendler}
-          filter={this.state.filter}
-          phoneBook={this.state.contacts}
-        ></ContactList>
+        <ContactForm onSubmit={this.addContact} />
+        {this.state.contacts.length === 0 ? (
+          <p>there are no contacts</p>
+        ) : (
+          <>
+            <Filter onInputHendler={this.filterHendler}></Filter>
+            <ContactList
+              deleteItem={this.deleteItem}
+              filteredContacts={this.showFilteredContacts()}
+            ></ContactList>
+          </>
+        )}
       </div>
     );
   }

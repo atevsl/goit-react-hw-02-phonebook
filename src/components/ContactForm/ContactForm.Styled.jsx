@@ -26,7 +26,8 @@ export const ButtonStyled = styled.button`
 `;
 export const InputStyled = styled.input`
    {
-    font-size: 24px;
+    font-family: 'Merienda', cursive;
+    font-size: 18px;
     height: 40px;
     border-radius: 15px;
     outline: none;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { LabelStyled, InputStyled } from '../ContactForm/ContactForm.Styled';
 import { SpanStyled } from './Filter.styled';
 const Filter = props => {
@@ -9,4 +10,9 @@ const Filter = props => {
     </LabelStyled>
   );
 };
+
+Filter.propTypes = {
+  onInputHendler: PropTypes.func.isRequired,
+};
+
 export default Filter;
