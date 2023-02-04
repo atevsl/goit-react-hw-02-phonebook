@@ -9,7 +9,6 @@ import {
 } from './ContactList.styled';
 
 class ContactList extends React.Component {
-  state = {};
   render() {
     return (
       <>
@@ -38,6 +37,12 @@ class ContactList extends React.Component {
 
 ContactList.propTypes = {
   deleteItem: PropTypes.func.isRequired,
-  filteredContacts: PropTypes.array.isRequired,
+  filteredContacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
 export default ContactList;
