@@ -13,6 +13,8 @@ export const FormStyled = styled.form`
 `;
 export const ButtonStyled = styled.button`
    {
+    font-family: 'Merienda', cursive;
+    color: black;
     cursor: pointer;
     padding: 8px 16px;
     background-color: white;

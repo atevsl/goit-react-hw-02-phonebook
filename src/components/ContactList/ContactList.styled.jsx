@@ -34,11 +34,13 @@ export const ContactListHeader = styled.h2`
 export const ContactListBtn = styled.button`
    {
      {
+      font-family: 'Merienda', cursive;
       cursor: pointer;
       padding: 2px 8px;
       background-color: white;
       border-radius: 10px;
       font-size: 20px;
+      color: black;
       &:hover {
         background-color: black;
         color: white;
