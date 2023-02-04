@@ -1,10 +1,12 @@
 import React from 'react';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 import {
   FormStyled,
   ButtonStyled,
   InputStyled,
   LabelStyled,
+  Headers,
 } from './ContactForm.Styled';
 
 class ContactForm extends React.Component {
@@ -28,7 +30,7 @@ class ContactForm extends React.Component {
   render() {
     return (
       <>
-        <h1>Phonebook</h1>
+        <Headers>Phonebook</Headers>
         <FormStyled onSubmit={this.onSubmitHendler}>
           <LabelStyled htmlFor="name">
             <span>Name:</span>

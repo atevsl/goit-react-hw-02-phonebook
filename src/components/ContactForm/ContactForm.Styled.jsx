@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 export const FormStyled = styled.form`
    {
-    border: 5px solid black;
+    font-size: 24px;
+    border: 3px solid black;
     border-radius: 15px;
-    padding: 50px;
+    padding: 25px 30px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 20px;
   }
 `;
@@ -14,10 +15,9 @@ export const ButtonStyled = styled.button`
    {
     cursor: pointer;
     padding: 8px 16px;
-    margin-top: 45px;
     background-color: white;
-    border-radius: 5px;
-    font-size: 32px;
+    border-radius: 15px;
+    font-size: 24px;
     &:hover {
       background-color: black;
       color: white;
@@ -26,8 +26,10 @@ export const ButtonStyled = styled.button`
 `;
 export const InputStyled = styled.input`
    {
-    font-size: 28px;
-    height: 50px;
+    font-size: 24px;
+    height: 40px;
+    border-radius: 15px;
+    outline: none;
   }
 `;
 export const LabelStyled = styled.label`
@@ -36,5 +38,10 @@ export const LabelStyled = styled.label`
     flex-direction: column;
     justify-content: center;
     alignitems: center;
+  }
+`;
+export const Headers = styled.h1`
+   {
+    font-size: 40px;
   }
 `;

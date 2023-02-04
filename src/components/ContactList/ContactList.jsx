@@ -3,37 +3,31 @@ import {
   ListStyled,
   ListItemStyled,
   ContactTextStyled,
+  ContactListHeader,
+  ContactListBtn,
 } from './ContactList.styled';
-import { ButtonStyled } from '../ContactForm/ContactForm.Styled';
-const ContactItem = ({ contact: { id, name, number }, deleteItem }) => {
-  return (
-    <>
-      <ContactTextStyled>
-        {name}: {number}
-      </ContactTextStyled>
-      <ButtonStyled type="button" onClick={() => deleteItem(id)}>
-        Delete
-      </ButtonStyled>
-    </>
-  );
-};
 
 class ContactList extends React.Component {
   state = {};
   render() {
     return (
       <>
-        <h2>Contacts</h2>
+        <ContactListHeader>Contacts:</ContactListHeader>
 
         <ListStyled>
           {this.props.filter === ''
-            ? this.props.phoneBook.map((contact, idx) => {
+            ? this.props.phoneBook.map(contact => {
                 return (
-                  <ListItemStyled key={idx}>
-                    <ContactItem
-                      contact={contact}
-                      deleteItem={this.props.deleteItem}
-                    ></ContactItem>
+                  <ListItemStyled key={contact.id}>
+                    <ContactTextStyled>
+                      {contact.name}: {contact.number}
+                    </ContactTextStyled>
+                    <ContactListBtn
+                      type="button"
+                      onClick={() => this.props.deleteItem(contact.id)}
+                    >
+                      Delete
+                    </ContactListBtn>
                   </ListItemStyled>
                 );
               })
@@ -43,13 +37,18 @@ class ContactList extends React.Component {
                     .toLowerCase()
                     .includes(this.props.filter.toLowerCase())
                 )
-                .map((contact, idx) => {
+                .map(contact => {
                   return (
-                    <ListItemStyled key={idx}>
-                      <ContactItem
-                        contact={contact}
-                        deleteItem={this.props.deleteItem}
-                      ></ContactItem>
+                    <ListItemStyled key={contact.id}>
+                      <ContactTextStyled>
+                        {contact.name}: {contact.number}
+                      </ContactTextStyled>
+                      <ContactListBtn
+                        type="button"
+                        onClick={() => this.props.deleteItem(contact.id)}
+                      >
+                        Delete
+                      </ContactListBtn>
                     </ListItemStyled>
                   );
                 })}
